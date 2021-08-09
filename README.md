@@ -37,7 +37,7 @@ kubectl scale machinedeployment/<<name of the machine deployment>> replicas=<<nu
 kubectl create -f lb-test.yaml
 ``` 
 
-2. Go to the hetzner cloud console and file the generated load-balancer(has a cryptic name), and note the IP-Address. Use that IP:8080 to access nginx.
+2. Go to the hetzner cloud console and find the generated load-balancer(it has a cryptic name), and note the IP-Address. Use that `IP:8080` to access nginx.
 
 ## Trying the external volumes
 1. Create a secret for hetzner cloud with the API Token:
@@ -69,8 +69,9 @@ kubectl create -f hetzner-pvc.yaml
 ```
 kubectl create -f mongo.yaml
 ```
+5. Go to the hetzner cloud and observe the generated Volume.
 
-5. Once the mongodb is created, you can access the container and create a mongodb object inside, just to make sure persistance works.
+6. Once the mongodb is created, you can access the container and create a mongodb object inside, just to make sure persistance works.
 
 ```
 kubectl exec -it mongo -- sh
@@ -79,8 +80,8 @@ db.local.insertOne({"something": "another"})
 db.local.find()
 ```
 
-6. Remove the pod, scale the nodes to 0 or do all sort of destructive operations to make sure there is no trace of the mongo infrastructure created(other than the pvc volume in hetzner)
-7. Recreate the pod and use the following commands to make sure the data still exists:
+7. Remove the pod, scale the nodes to 0 or do all sort of destructive operations to make sure there is no trace of the mongo infrastructure created(other than the pvc volume in hetzner)
+8. Recreate the pod and use the following commands to make sure the data still exists:
 
 ```
 kubectl exec -it mongo -- sh
