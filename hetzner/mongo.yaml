@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: mongo
+spec:
+   containers:
+      - image: mongo
+        name: mongo
+        volumeMounts:
+           - mountPath: /data/db
+             name: my-csi-volume
+   volumes:
+    - name: my-csi-volume
+      persistentVolumeClaim:
+        claimName: csi-pvc
