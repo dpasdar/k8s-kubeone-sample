@@ -2,7 +2,7 @@
 KubeOne can be used to create and maintain a set of controllers/workers using Hetzner. The resulting cluster is integrated with the Hetzner controller manager, making it easy to use hetzner specific features such as private networks and load balancers.
 
 ## Create a Kubernetes Cluster using Terraform
-The provided sample creates a K8s cluster with HighAvailability(odd=3 number of master nodes).
+The provided sample creates a K8s cluster with HighAvailability(odd=3 number of master nodes). Make sure `terraform` and `kubeone` are already installed.
 1. Make sure a proper SSH key is provided. The existing keys in Hetzner can not be re-used. Update the key path in `terraform.tfvars` file.
 2. Load the HCLOUD_TOKEN env variable somehow, e.g. with the awesome [direnv](https://direnv.net/) tool.
 3. Run the following commands to create the controllers
