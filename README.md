@@ -92,3 +92,9 @@ kubectl exec -it mongo -- sh
 mongo
 db.local.find()
 ```
+## Removing/Unprovisioning everything
+
+```
+kubeone reset --manifest kubeone.yaml -t tf.json
+terraform destroy
+```
