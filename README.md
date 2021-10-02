@@ -4,8 +4,11 @@ KubeOne can be used to create and maintain a set of controllers/workers using He
 ## Create a Kubernetes Cluster using Terraform
 The provided sample creates a K8s cluster with HighAvailability(odd=3 number of master nodes). Make sure `terraform` and `kubeone` are already installed.
 1. Make sure a proper SSH key is provided. The existing keys in Hetzner can not be re-used. Update the key path in `terraform.tfvars` file.
-2. Load the HCLOUD_TOKEN env variable somehow, e.g. with the awesome [direnv](https://direnv.net/) tool.
-3. Run the following commands to create the controllers
+2. Go to the hetzner directory
+3. Load the `HCLOUD_TOKEN` env variable somehow, e.g. with the awesome [direnv](https://direnv.net/) tool.
+4. Adjust the `terraform.tfvars` accordingly
+5. Adjust the `kubeone.yaml` with the correct version of k8s
+6. Run the following commands to create the controllers
 
 ```
 terraform init
@@ -27,7 +30,8 @@ kubeone apply --manifest kubeone.yaml -t tf.json
 7. The default config creates only one worker node, to scale use the following command:
 
 ```
-kubectl scale machinedeployment/<<name of the machine deployment>> replicas=<<number of replicas>>
+kubectl get machinedeployment -n kube-system
+kubectl scale machinedeployment/<<name of the machine deployment>> --replicas=<<number of replicas>> -n kube-system
 ```
 
 ## Trying the Load Balancers for applications
