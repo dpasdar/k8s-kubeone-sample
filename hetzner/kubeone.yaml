@@ -1,7 +1,7 @@
 apiVersion: kubeone.io/v1beta1
 kind: KubeOneCluster
 versions:
-  kubernetes: '1.21.3'
+  kubernetes: '1.20.11'
 cloudProvider:
   hetzner: {}
   external: true
